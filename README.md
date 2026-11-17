@@ -17,10 +17,11 @@ rate limits and TLS between the servers.
 | `graph_security.internal_tls` | https between the servers with a private CA: the checks at startup, uvicorn's options, urllib and httpx clients |
 | `graph_security.errors` | The refusals: `AdminRefused` and `KeyRefused`, with an HTTP status |
 | `graph_security.settings` | `SecuritySettings`: every security setting, the same names and defaults in each application |
+| `graph_security.web` | For FastAPI: `Security`, the checks on each call (who the caller is, the permission, an admin login for admin permissions, the rate limit, work at once) as dependencies, and the sign-in endpoints (`/session`, `/console/sso/...`) |
 
 What stays in each application: its permissions (the `Catalogue`), which permission each endpoint
-needs, its FastAPI checks, its own credentials (a replication key, a partition token), the sign-in
-endpoints, and the names of its cookies and realms.
+needs, its own credentials (a replication key, a partition token), its request state and audit log
+(hooks on `Security`), and the names of its cookies and realms.
 
 ## Using it
 
@@ -34,18 +35,37 @@ BUILT_IN, parse_roles = CATALOGUE.built_in, CATALOGUE.parse_roles
 ```
 
 Register the catalogue once, when the application's roles module is imported: functions called
-without `roles` use it, and say so if there is none. The other modules read the settings by name
+without `roles` use it, and say so if there is none. Then, with FastAPI:
+
+```python
+from fastapi import Depends
+from graph_security.web import Security
+
+SECURITY = Security(parts=lambda request: request.app.state,      # keys, admin, sessions, limits, oidc
+                    settings=lambda request: get_settings(), cookie="app_session", sso_cookie="app_sso",
+                    on_caller=lambda request, p: ..., audit=...)
+
+@app.post("/query", dependencies=[Depends(SECURITY.permission("query"))])
+def query(request: Request, ...):
+    SECURITY.demand(request, "write")                              # once it knows the query writes
+
+app.include_router(SECURITY.session_router())
+```
+
+Refusals are `KeyRefused` and `AdminRefused` (`graph_security.errors`): answer them with their
+`status`, and on a 401 a `WWW-Authenticate` naming the realm for their `scope`. The other modules read the settings by name
 (`settings.api_keys`, `settings.oidc_issuer`, ...), from the application's own `Settings` or a
 `SecuritySettings`.
 
 ## Installing
 
 ```bash
-pip install "sitelabs-graph-security @ git+https://github.com/sitelabs-com/sitelabs-graph-security.git@v0.1.0"
+pip install "sitelabs-graph-security[fastapi] @ git+https://github.com/sitelabs-com/sitelabs-graph-security.git@v0.2.0"
 pip install --no-deps -e ../sitelabs-graph-security       # while changing it with an application
 ```
 
-Python 3.12 or later. It needs PyJWT with `cryptography`; `httpx` only for `internal_tls.httpx_client()`.
+Python 3.12 or later. It needs PyJWT with `cryptography`; FastAPI for `graph_security.web`
+(the `fastapi` extra); `httpx` only for `internal_tls.httpx_client()`.
 
 ## Tests
 

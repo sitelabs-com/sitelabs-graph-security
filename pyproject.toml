@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sitelabs-graph-security"
-version = "0.1.0"
+version = "0.2.0"
 description = "Security for the sitelabs graph servers: API keys, roles and permissions, the admin login, browser sessions, OAuth 2.0 / OpenID Connect access tokens, rate limits and internal TLS"
 readme = "README.md"
 license = "Apache-2.0"
@@ -17,7 +17,8 @@ dependencies = [
 
 [project.optional-dependencies]
 httpx = ["httpx>=0.28"]     # internal_tls.httpx_client()
-test = ["pytest>=9.1", "httpx>=0.28"]
+fastapi = ["fastapi>=0.143"]   # graph_security.web: the checks on each call, the sign-in endpoints
+test = ["pytest>=9.1", "httpx>=0.28", "fastapi>=0.143"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

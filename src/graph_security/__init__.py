@@ -23,5 +23,7 @@ browser sessions, OAuth 2.0 / OpenID Connect access tokens, rate limits and inte
     graph_security.limits        rate limits and work at once, per caller
     graph_security.internal_tls  TLS between the servers
     graph_security.errors        the refusals (401, 403, 429, 503)
+    graph_security.settings      every security setting, as a dataclass
+    graph_security.web           for FastAPI: the checks on each call, and the sign-in endpoints
 """
-__version__ = "0.1.0"
+__version__ = "0.2.0"
