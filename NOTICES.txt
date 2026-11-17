@@ -1,0 +1,26 @@
+THIRD-PARTY NAMES, TRADEMARKS AND LICENCES
+==========================================
+
+This repository refers to the third-party specifications, software, products and services listed
+below. Their names are used only to identify them. All rights in them lie with their respective
+copyright and trademark owners, named under each entry.
+
+
+THIRD-PARTY SOFTWARE THE PACKAGE USES OR NAMES
+----------------------------------------------
+
+PyJWT (MIT)
+All rights lie with the respective copyright owners: José Padilla and the PyJWT contributors.
+
+cryptography (Apache-2.0 or BSD-3-Clause)
+All rights lie with the respective copyright owners: the Python Cryptographic Authority and individual contributors.
+
+httpx (BSD-3-Clause; optional)
+All rights lie with the respective copyright owner: Encode OSS Ltd.
+
+OAuth 2.0 and OpenID Connect
+The specifications are the IETF's (RFC 6749, RFC 7636, RFC 7519) and the OpenID Foundation's.
+OpenID is a trademark of the OpenID Foundation.
+
+Keycloak, Auth0, Amazon Cognito, Microsoft Entra ID, Okta
+Named in the documentation as identity providers. All rights lie with their respective owners.
