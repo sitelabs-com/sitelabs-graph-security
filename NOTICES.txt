@@ -18,6 +18,16 @@ All rights lie with the respective copyright owners: the Python Cryptographic Au
 httpx (BSD-3-Clause; optional)
 All rights lie with the respective copyright owner: Encode OSS Ltd.
 
+FastAPI (MIT; optional, the fastapi extra: graph_security.web), and Starlette (BSD-3-Clause), which it is built on
+All rights lie with the respective copyright and trademark owners: Sebastián Ramírez (FastAPI);
+Encode OSS Ltd. (Starlette).
+
+pytest (MIT; the test extra)
+All rights lie with the respective copyright and trademark owners: Holger Krekel and the pytest-dev team.
+
+Python (PSF-2.0)
+All rights lie with the respective copyright and trademark owner: the Python Software Foundation.
+
 OAuth 2.0 and OpenID Connect
 The specifications are the IETF's (RFC 6749, RFC 7636, RFC 7519) and the OpenID Foundation's.
 OpenID is a trademark of the OpenID Foundation.
