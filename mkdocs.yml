@@ -1,0 +1,37 @@
+site_name: sitelabs-graph-security
+site_url: https://sitelabs-com.github.io/sitelabs-graph-security/
+repo_url: https://github.com/sitelabs-com/sitelabs-graph-security
+theme:
+  name: readthedocs
+  navigation_depth: 3 # How many levels of subheadings appear in the sidebar
+  collapse_navigation: true # Collapse sections that aren't currently active
+  titles_only: false # Show page subheadings (H2, H3) inside the sidebar
+extra_css:
+  - stylesheets/extra.css
+hooks:
+  - mkdocs_hooks.py # leaves each page's own menu block out of the site
+plugins:
+  - search
+  - mike: # one site per release (0.2/, 0.3/ ...) and latest/: docs/development.md#the-documentation-site
+      version_selector: true
+      canonical_version: latest
+
+# Written by `python tools/docs.py` from GROUPS in tools/docs.py (the docs' own menu): edit those, not this.
+nav:
+  - Overview:
+      - Overview: overview.md
+      - Settings: settings.md
+  - Callers:
+      - API keys: keys.md
+      - Roles and permissions: roles.md
+      - OAuth and OIDC: oauth-oidc.md
+      - Browser sessions: sessions.md
+  - Protections:
+      - Admin login: admin-login.md
+      - Rate limits: rate-limits.md
+      - TLS between servers: internal-tls.md
+  - Using it:
+      - In a FastAPI app: fastapi.md
+      - Development: development.md
+  - References:
+      - All documents: index.md

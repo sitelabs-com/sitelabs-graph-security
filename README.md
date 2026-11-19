@@ -6,6 +6,10 @@ Security for the sitelabs graph servers, shared by
 roles and permissions, the admin login, browser sessions, OAuth 2.0 / OpenID Connect access tokens,
 rate limits and TLS between the servers.
 
+**Documentation:** [sitelabs-com.github.io/sitelabs-graph-security](https://sitelabs-com.github.io/sitelabs-graph-security/),
+a site per release (`/0.2/`, ..., `/latest/`): each mechanism, the settings, using it in a FastAPI
+app, development. **Changes:** [CHANGELOG.md](CHANGELOG.md).
+
 | Module | What |
 |---|---|
 | `graph_security.roles` | Roles and permissions. Each application describes its permissions in a `Catalogue` and registers it with `use()`; `read`, `write` and `admin` are built from it, and `CUSTOM_ROLES` adds more |
