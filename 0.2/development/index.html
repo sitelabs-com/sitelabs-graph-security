@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/development/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Development - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Development";
+        var mkdocs_page_input_path = "development.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/development/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Development</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-tests">The tests</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#changing-it-beside-an-application">Changing it beside an application</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#releasing">Releasing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-documentation-site">The documentation site</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Using it</li>
+      <li class="breadcrumb-item active">Development</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/development.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="development">Development</h1>
+<blockquote>
+<p><strong>For:</strong> developers of this package. <strong>You'll find:</strong> the tests, changing it beside an application,
+releasing, and the documentation site.</p>
+</blockquote>
+<h2 id="the-tests">The tests</h2>
+<pre><code class="language-bash">pip install -e &quot;.[test]&quot;
+python -m pytest
+</code></pre>
+<p>The tests make their own keys, tokens and certificates: no identity provider and no network.</p>
+<h2 id="changing-it-beside-an-application">Changing it beside an application</h2>
+<p>Install a checkout in place of the release an application pins, run the application's tests, then
+release:</p>
+<pre><code class="language-bash">pip install --no-deps -e ../sitelabs-graph-security       # in the application's environment
+</code></pre>
+<p>The settings' names and defaults are shared: a new setting goes in <code>SecuritySettings</code>, in each
+application's <code>Settings</code>, and on the <a href="../settings/">Settings</a> page.</p>
+<h2 id="releasing">Releasing</h2>
+<ol>
+<li>Change the version in <code>pyproject.toml</code> (<code>0.3.0</code>), and move the changelog's <strong>Unreleased</strong>
+   entries under the new release (<a href="https://github.com/sitelabs-com/sitelabs-graph-security/blob/main/CHANGELOG.md">CHANGELOG.md</a>).</li>
+<li>Commit, tag (<code>v0.3.0</code>) and push both. The tag publishes the release's documentation site.</li>
+<li>In each application, pin the new tag (its <code>requirements.txt</code> and lock file), and change its links
+   to this site to the new release (<code>/sitelabs-graph-security/0.3/</code>).</li>
+</ol>
+<h2 id="the-documentation-site">The documentation site</h2>
+<p><code>docs/</code> is published at https://sitelabs-com.github.io/sitelabs-graph-security/, one site per
+release, with <a href="https://github.com/jimporter/mike">mike</a>:</p>
+<ul>
+<li><code>/0.2/</code>, <code>/0.3/</code> ...: each release's site, for the code an application pins. Applications link
+  to these.</li>
+<li><code>/latest/</code>: the newest. The site's root sends browsers there.</li>
+</ul>
+<p><code>.github/workflows/mkdocs.yml</code> publishes the release in <code>pyproject.toml</code> on every push to <code>main</code> that
+changes the docs, and on every tag. The menu at the top of each page and the sidebar come from
+<code>GROUPS</code> in <code>tools/docs.py</code>:</p>
+<pre><code class="language-bash">python tools/docs.py                     # write the menus and mkdocs.yml's nav
+python tools/docs.py --check             # change nothing; fail if a file is out of date
+pip install -r requirements-docs.txt
+mkdocs serve                             # the site at http://127.0.0.1:8000, as you edit
+mkdocs build --strict                    # what the workflow builds, failing on a broken link
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fastapi/" class="btn btn-neutral float-left" title="In a FastAPI app"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-right" title="All documents">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fastapi/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

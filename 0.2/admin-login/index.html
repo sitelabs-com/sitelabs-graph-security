@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/admin-login/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Admin login - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Admin login";
+        var mkdocs_page_input_path = "admin-login.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/admin-login/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Admin login</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-challenge">The challenge</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-token">The token</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-lockout">The lockout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#computing-an-answer">Computing an answer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#refusals">Refusals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-it-doesnt-protect-against">What it doesn't protect against</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Protections</li>
+      <li class="breadcrumb-item active">Admin login</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/admin-login.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="admin-login">Admin login</h1>
+<blockquote>
+<p><strong>For:</strong> whoever runs a server's admin endpoints, and developers of a client. <strong>You'll find:</strong> why
+an admin key alone isn't enough, the challenge, the token, the lockout, the settings, computing an
+answer, and what it doesn't protect against.</p>
+</blockquote>
+<p>An application's admin permissions (destroying data, changing the cluster) need a <strong>login</strong> as well
+as an admin role. The login proves the caller holds an admin key without the key crossing the
+network, and gives a short-lived token.</p>
+<h2 id="the-challenge">The challenge</h2>
+<pre><code>client                                             server
+  │  GET /admin/challenge                               │
+  │◄──────────────── {&quot;nonce&quot;: &quot;9f2c41...&quot;, &quot;expires_in&quot;: 60}
+  │                                                     │
+  │  client = sha256(key)                               │
+  │  hash   = sha256(client)     (the key's entry's)    │
+  │  response = client XOR HMAC-SHA256(hash, nonce), hex│
+  │  POST /admin/login {&quot;nonce&quot;, &quot;response&quot;}            │
+  │◄──────────────── {&quot;token&quot;: &quot;q8Zr...&quot;, &quot;expires_in&quot;: 900}
+  │                                                     │
+  │  an admin call                                      │
+  │  Authorization: Bearer q8Zr...                      │
+</code></pre>
+<ul>
+<li><strong>A key alone doesn't reach an admin endpoint.</strong> An admin's key works like a write key on the
+  others; the admin endpoints need the token.</li>
+<li><strong>The answer is SCRAM's</strong> (RFC 5802). The server computes the HMAC from the hash it holds, recovers
+  <code>client</code>, and checks that its SHA-256 is the hash. So answering takes <code>sha256(key)</code>, which the entry
+  doesn't give away: <strong>a stolen <code>API_KEYS</code> can't log in.</strong></li>
+<li><strong>A nonce is used once:</strong> it is gone after one answer, right or wrong, and after
+  <code>ADMIN_CHALLENGE_SECONDS</code>. A captured answer can't be replayed.</li>
+</ul>
+<h2 id="the-token">The token</h2>
+<ul>
+<li><strong>It names the key that logged in and when it expires</strong> (<code>ADMIN_TOKEN_SECONDS</code>), signed with
+  <code>SESSION_SECRET</code> (HMAC-SHA256). The server keeps nothing of it, so it holds across a restart, and
+  at every server with the same secret.</li>
+<li><strong>It works only while its key does:</strong> removing or replacing the key in <code>API_KEYS</code> or
+  <code>API_KEYS_FILE</code>, or giving it a role not built on admin, ends its logins at once (401: log in again).</li>
+<li><strong><code>POST /admin/logout</code></strong> ends it early, at this server.</li>
+<li><strong>Each admin call still needs its permission:</strong> a role <code>operator=admin-manage</code> may log in, but not
+  call what needs <code>manage</code> (<a href="../roles/">Roles and permissions</a>).</li>
+</ul>
+<h2 id="the-lockout">The lockout</h2>
+<p>Wrong answers are counted per caller's address. After <code>ADMIN_MAX_FAILURES</code> in a row, that address
+gets 429 (with <code>Retry-After</code>) for <code>ADMIN_LOCKOUT_SECONDS</code>, even for a right answer. Other addresses
+are not affected. Behind a reverse proxy, the address is the one it passes on: set
+<code>UVICORN_FORWARDED_ALLOW_IPS</code> to the proxy's addresses, or every client shares the proxy's.</p>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ADMIN_TOKEN_SECONDS</code></td>
+<td><code>900</code></td>
+<td>How long a login lasts</td>
+</tr>
+<tr>
+<td><code>ADMIN_CHALLENGE_SECONDS</code></td>
+<td><code>60</code></td>
+<td>How long a challenge's nonce can be answered</td>
+</tr>
+<tr>
+<td><code>ADMIN_MAX_FAILURES</code></td>
+<td><code>5</code></td>
+<td>Wrong answers in a row from one address before it is locked out...</td>
+</tr>
+<tr>
+<td><code>ADMIN_LOCKOUT_SECONDS</code></td>
+<td><code>300</code></td>
+<td>...for this long</td>
+</tr>
+<tr>
+<td><code>SESSION_SECRET</code></td>
+<td>made at startup</td>
+<td>Signs the tokens: the same on every server, so a login works at all of them</td>
+</tr>
+</tbody>
+</table>
+<p><strong>With keys, but none with an admin role,</strong> the admin endpoints are off (403). <strong>With an identity
+provider,</strong> a token with the admin role reaches them with no challenge
+(<a href="../oauth-oidc/">OAuth and OIDC</a>).</p>
+<h2 id="computing-an-answer">Computing an answer</h2>
+<p><code>graph_security.admin_auth.answer(key, nonce)</code> returns it. In any language: with <code>client</code> and <code>hash</code>
+the hex strings above,</p>
+<pre><code class="language-python">bytes(a ^ b for a, b in zip(bytes.fromhex(client), hmac.new(hash.encode(), nonce.encode(), &quot;sha256&quot;).digest())).hex()
+</code></pre>
+<p>Each application has a tool that logs in for you, reading the key from the environment, never the
+command line (sitelabs-graph-database: <code>scripts/admin-token.py</code>; sitelabs-partitioned-graph:
+<code>python -m app.tools admin</code>).</p>
+<h2 id="refusals">Refusals</h2>
+<table>
+<thead>
+<tr>
+<th>Answer</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>401</strong></td>
+<td>No token, a malformed, unknown or expired one; a wrong answer, or a nonce unknown, used or expired; a token whose key is gone</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>The admin endpoints are off: no key has an admin role</td>
+</tr>
+<tr>
+<td><strong>429</strong>, with <code>Retry-After</code></td>
+<td>Too many wrong answers from this address; or 10,000 challenges outstanding</td>
+</tr>
+</tbody>
+</table>
+<p>Every login, right or refused, and every logout goes to the application's audit hook. Neither a key
+nor a token is ever logged.</p>
+<h2 id="what-it-doesnt-protect-against">What it doesn't protect against</h2>
+<ul>
+<li><strong>Keys, not users:</strong> no password policy or second factor. An identity provider gives both.</li>
+<li><strong>No transport security of its own:</strong> tokens travel as bearer headers. Use TLS.</li>
+<li><strong>A logout is per server:</strong> another server with the same secret takes the token until it expires,
+  at most <code>ADMIN_TOKEN_SECONDS</code>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../sessions/" class="btn btn-neutral float-left" title="Browser sessions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rate-limits/" class="btn btn-neutral float-right" title="Rate limits">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../sessions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../rate-limits/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

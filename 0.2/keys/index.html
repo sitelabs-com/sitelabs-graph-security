@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/keys/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API keys - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API keys";
+        var mkdocs_page_input_path = "keys.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/keys/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">API keys</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-entry">The entry</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#changing-keys-without-a-restart">Changing keys without a restart</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-keys-last-day">A key's last day</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#with-no-keys">With no keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#refusals">Refusals</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Callers</li>
+      <li class="breadcrumb-item active">API keys</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/keys.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-keys">API keys</h1>
+<blockquote>
+<p><strong>For:</strong> whoever gives clients their keys. <strong>You'll find:</strong> what a key is, the entry the server
+holds, changing keys without a restart, a key's last day, and what happens with no keys at all.</p>
+</blockquote>
+<p>A client sends its key on every call, as <code>X-API-Key: &lt;key&gt;</code>. Each key has a <strong>name</strong> (the one in the
+logs), a <strong>role</strong> (<a href="../roles/">Roles and permissions</a>) and, if you like, a <strong>last day</strong>.</p>
+<h2 id="the-entry">The entry</h2>
+<p>The server never holds a key. It holds an entry for each, comma-separated in <code>API_KEYS</code>:</p>
+<pre><code>name:role:hash[:YYYY-MM-DD]
+ann:read:3f1c9e...                    # ann, who may read
+loader:write:9a0b47...:2027-03-31     # a key that stops working after 31 March 2027
+alex:admin:77d2e1...
+</code></pre>
+<ul>
+<li><strong>The hash</strong> is the hex SHA-256 of the hex SHA-256 of the key. The server looks a key up by it, so a
+  key can't be guessed by timing.</li>
+<li><strong>A stolen entry can't be used as a key,</strong> nor to log in as an admin: the login needs the key's
+  first hash, which the entry doesn't give away (<a href="../admin-login/">Admin login</a>).</li>
+<li><strong>A malformed entry stops the server at startup,</strong> naming it: an unknown role, a bad hash, a date
+  that isn't one.</li>
+<li><strong>Give each client its own key,</strong> so one can be taken back alone.</li>
+</ul>
+<p>Each application has a tool that makes a key and prints it once, with its entry (sitelabs-graph-database:
+<code>scripts/api-key.py</code>; sitelabs-partitioned-graph: <code>python -m app.tools apikey</code>). From code,
+<code>graph_security.keys.new_key(name, role, days=0)</code> returns the key and its entry (<code>days</code>: how
+long it lasts; 0, no last day).</p>
+<h2 id="changing-keys-without-a-restart">Changing keys without a restart</h2>
+<p><code>API_KEYS</code> is read at startup. <strong><code>API_KEYS_FILE</code></strong> names a file of more entries, one a line (<code>#</code>
+starts a comment), read again whenever the file changes: a key is added, removed or replaced with no
+restart. A key removed or replaced stops working at once: its browser sessions and admin logins
+with it.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>API_KEYS</code></td>
+<td>none</td>
+<td>The entries, comma-separated</td>
+</tr>
+<tr>
+<td><code>API_KEYS_FILE</code></td>
+<td>none</td>
+<td>A file of more entries, one a line, read again when it changes</td>
+</tr>
+</tbody>
+</table>
+<p>A key in both is refused at startup (the same name twice).</p>
+<h2 id="a-keys-last-day">A key's last day</h2>
+<p>An entry may end with its last day, <code>:YYYY-MM-DD</code>. The key works until the end of that day (UTC),
+then answers 401 (<code>the key 'loader' expired at the end of 2027-03-31</code>). The server warns at startup
+from two weeks before.</p>
+<h2 id="with-no-keys">With no keys</h2>
+<p><strong>With no keys at all and no identity provider, every endpoint is open,</strong> the admin ones too, with
+no login. That is for development only: in production (<code>ENVIRONMENT=production</code>), a server with no
+key and no identity provider refuses to start, and so does one whose <code>API_KEYS_FILE</code> holds none.</p>
+<h2 id="refusals">Refusals</h2>
+<table>
+<thead>
+<tr>
+<th>Answer</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>401</strong></td>
+<td>No key, a key that isn't in <code>API_KEYS</code> or <code>API_KEYS_FILE</code>, or one past its last day</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>A key whose role hasn't the permission the call needs (<a href="../roles/#refusals">Roles and permissions</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>Keys are never logged: only their names.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../settings/" class="btn btn-neutral float-left" title="Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../roles/" class="btn btn-neutral float-right" title="Roles and permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../settings/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../roles/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

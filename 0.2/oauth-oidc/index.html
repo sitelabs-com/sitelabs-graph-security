@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/oauth-oidc/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>OAuth and OIDC - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OAuth and OIDC";
+        var mkdocs_page_input_path = "oauth-oidc.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/oauth-oidc/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">OAuth and OIDC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-put-tls-in-front">1. Put TLS in front</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-set-up-the-provider">2. Set up the provider</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-set-the-servers-settings">3. Set the server's settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-a-token-is-checked">How a token is checked</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#turning-api-keys-off">Turning API keys off</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-it-doesnt-do">What it doesn't do</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Callers</li>
+      <li class="breadcrumb-item active">OAuth and OIDC</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/oauth-oidc.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="oauth-and-oidc">OAuth and OIDC</h1>
+<blockquote>
+<p><strong>For:</strong> whoever wants users and services to log in through an identity provider instead of API
+keys. <strong>You'll find:</strong> what it does, the steps to turn it on, each provider's settings, the
+settings, and what it doesn't do.</p>
+</blockquote>
+<p>With <code>OAUTH_OIDC_ACTIVE=True</code>, a server accepts access tokens from an OpenID Connect provider:
+Keycloak, Microsoft Entra ID, Okta, Auth0, Amazon Cognito or any other that issues signed JWTs. The
+provider holds the users, their passwords and MFA; the server only checks the tokens it is sent,
+and gives none itself. It is off by default.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>API keys</th>
+<th>With OIDC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who the caller is</td>
+<td>A key's name</td>
+<td>The token's <code>preferred_username</code> (or the service's <code>client_id</code>)</td>
+</tr>
+<tr>
+<td>Their role</td>
+<td>The key's role</td>
+<td>A claim in the token, mapped by <code>OIDC_ROLE_MAP</code></td>
+</tr>
+<tr>
+<td>A user joins or leaves</td>
+<td>Edit the keys</td>
+<td>At the provider; nothing on the server</td>
+</tr>
+<tr>
+<td>Second factor</td>
+<td>None</td>
+<td>Whatever the provider requires</td>
+</tr>
+<tr>
+<td>Admin endpoints</td>
+<td>The challenge login with an admin key</td>
+<td>A token with the admin role, and a recent login if you ask for one</td>
+</tr>
+</tbody>
+</table>
+<p>An application's own credentials between its servers (sitelabs-partitioned-graph's
+<code>PARTITION_TOKEN</code>, sitelabs-graph-database's <code>REPLICATION_API_KEY</code>) don't go to the provider, so it
+being away never stops them.</p>
+<h2 id="1-put-tls-in-front">1. Put TLS in front</h2>
+<p>A token sent over plain HTTP can be taken and used by anyone who sees it until it expires. Put a
+reverse proxy with TLS in front of the server before handing out tokens.</p>
+<h2 id="2-set-up-the-provider">2. Set up the provider</h2>
+<ol>
+<li><strong>The API</strong>, with an audience, say <code>graph-api</code>. Its tokens must carry it (<code>aud</code>).</li>
+<li><strong>Roles or groups</strong> for read, write and admin (and any roles of your own), say <code>graph-read</code>,
+   <code>graph-write</code>, <code>graph-admin</code>. Give them to users and services, and make sure they appear in the
+   access token.</li>
+<li><strong>A client for each service,</strong> with the client credentials grant, given the role it needs.</li>
+<li><strong>For people,</strong> the client they log in with: the device code flow, the provider's CLI, or a web
+   page's client (<a href="../sessions/#at-the-identity-provider">Browser sessions</a>).</li>
+<li><strong>MFA</strong> for everyone with the admin role, and <strong>access tokens that last 5 to 15 minutes</strong>: a
+   token can't be taken back once issued, only left to expire.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th><code>OIDC_ISSUER</code></th>
+<th><code>OIDC_ROLE_CLAIM</code></th>
+<th><code>OIDC_AUDIENCE_CLAIM</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keycloak</td>
+<td><code>https://&lt;host&gt;/realms/&lt;realm&gt;</code></td>
+<td><code>realm_access.roles</code>; add an audience mapper so <code>aud</code> holds your API</td>
+<td><code>aud</code></td>
+</tr>
+<tr>
+<td>Microsoft Entra ID</td>
+<td><code>https://login.microsoftonline.com/&lt;tenant id&gt;/v2.0</code></td>
+<td><code>roles</code> (the app roles you define)</td>
+<td><code>aud</code> (the API's application id)</td>
+</tr>
+<tr>
+<td>Okta</td>
+<td><code>https://&lt;org&gt;.okta.com/oauth2/&lt;authorization server&gt;</code></td>
+<td><code>groups</code> (add a groups claim), or <code>scp</code></td>
+<td><code>aud</code></td>
+</tr>
+<tr>
+<td>Auth0</td>
+<td><code>https://&lt;tenant&gt;.auth0.com/</code>, with its final <code>/</code></td>
+<td><code>permissions</code> (with RBAC on), or a namespaced claim an Action adds</td>
+<td><code>aud</code></td>
+</tr>
+<tr>
+<td>Amazon Cognito</td>
+<td><code>https://cognito-idp.&lt;region&gt;.amazonaws.com/&lt;user pool id&gt;</code></td>
+<td><code>cognito:groups</code></td>
+<td><code>client_id</code>: its access tokens have no <code>aud</code>, so <code>OIDC_AUDIENCE</code> is the app client's id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-set-the-servers-settings">3. Set the server's settings</h2>
+<pre><code class="language-bash">OAUTH_OIDC_ACTIVE=True
+OIDC_ISSUER=https://idp.example.com/realms/graph
+OIDC_AUDIENCE=graph-api
+OIDC_ROLE_CLAIM=realm_access.roles
+OIDC_ROLE_MAP=admin=graph-admin,write=graph-write,read=graph-read
+# optional
+OIDC_ADMIN_MAX_AGE_SECONDS=900        # admin endpoints: a login in the last 15 minutes
+OIDC_ACCEPT_API_KEYS=True             # keys go on working while clients move over
+</code></pre>
+<p>The server refuses to start, naming each problem, without one of the four required settings, or
+with one it can't use:</p>
+<ul>
+<li>an <code>http://</code> issuer or JWKS URL elsewhere than this machine;</li>
+<li>an algorithm that isn't asymmetric (<code>HS256</code>): only <code>RS256</code>, <code>RS384</code>, <code>RS512</code>, <code>ES256</code>, <code>ES384</code>,
+  <code>ES512</code>, <code>PS256</code>, <code>PS384</code>, <code>PS512</code> and <code>EdDSA</code>;</li>
+<li>a role map entry naming a role that isn't built in or one of <code>CUSTOM_ROLES</code>.</li>
+</ul>
+<p><code>OIDC_*</code> settings set while <code>OAUTH_OIDC_ACTIVE=False</code> have no effect, and the server says so.</p>
+<h2 id="how-a-token-is-checked">How a token is checked</h2>
+<ul>
+<li><strong>The signature,</strong> with the provider's keys (JWKS), from its discovery document or <code>OIDC_JWKS_URL</code>.
+  They are fetched when the first token arrives, again every <code>OIDC_JWKS_REFRESH_SECONDS</code> (an hour),
+  and when a token names a key the server doesn't have. A server starts even when the provider can't
+  be reached: tokens are refused with 503 until the keys are fetched, and keys already fetched go on
+  being used while it is away.</li>
+<li><strong>The issuer, the audience</strong> (in <code>OIDC_AUDIENCE_CLAIM</code>), <strong>the expiry</strong> and <code>nbf</code>, with
+  <code>OIDC_LEEWAY_SECONDS</code> (60) for the clocks.</li>
+<li><strong>The roles:</strong> the claim <code>OIDC_ROLE_CLAIM</code> (a dotted path such as <code>realm_access.roles</code>), mapped by
+  <code>OIDC_ROLE_MAP</code>, <code>role=value</code> each. A token with none of the mapped values is refused (403). One with
+  several has the permissions of all of them.</li>
+<li><strong>The caller's name</strong> in the logs: <code>OIDC_NAME_CLAIM</code> (<code>preferred_username</code>), else <code>client_id</code>, <code>azp</code>
+  or <code>sub</code>.</li>
+<li><strong>The admin endpoints</strong> take a token with the admin role, no challenge login, and with
+  <code>OIDC_ADMIN_MAX_AGE_SECONDS</code>, only if the user logged in that recently (<code>auth_time</code>).</li>
+</ul>
+<p>A refusal says why, without the token: expired, another issuer, not for this API, a key the
+provider doesn't list, or none of the roles. Tokens are never logged.</p>
+<h2 id="turning-api-keys-off">Turning API keys off</h2>
+<p>Once every client uses tokens, set <code>OIDC_ACCEPT_API_KEYS=False</code>: <code>X-API-Key</code> is refused (401), the
+admin challenge login is off (403), and the keys are ignored. Leave it <code>True</code> to keep a key as a way
+in while the provider is down.</p>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OAUTH_OIDC_ACTIVE</code></td>
+<td><code>False</code></td>
+<td>Accept access tokens from an identity provider</td>
+</tr>
+<tr>
+<td><code>OIDC_ISSUER</code></td>
+<td>none</td>
+<td>The provider's issuer (<code>https://</code>): its discovery document is read from there</td>
+</tr>
+<tr>
+<td><code>OIDC_AUDIENCE</code></td>
+<td>none</td>
+<td>The audience a token must be for</td>
+</tr>
+<tr>
+<td><code>OIDC_ROLE_CLAIM</code></td>
+<td>none</td>
+<td>The claim that holds the roles</td>
+</tr>
+<tr>
+<td><code>OIDC_ROLE_MAP</code></td>
+<td>none</td>
+<td><code>role=value</code> each: which claim value gives which role</td>
+</tr>
+<tr>
+<td><code>OIDC_AUDIENCE_CLAIM</code></td>
+<td><code>aud</code></td>
+<td>Where the audience is (<code>client_id</code> for Cognito)</td>
+</tr>
+<tr>
+<td><code>OIDC_NAME_CLAIM</code></td>
+<td><code>preferred_username</code></td>
+<td>The caller's name in the logs</td>
+</tr>
+<tr>
+<td><code>OIDC_JWKS_URL</code></td>
+<td>the discovery document's</td>
+<td>The provider's keys</td>
+</tr>
+<tr>
+<td><code>OIDC_ALGORITHMS</code></td>
+<td><code>RS256,ES256</code></td>
+<td>Signatures accepted: asymmetric ones only</td>
+</tr>
+<tr>
+<td><code>OIDC_LEEWAY_SECONDS</code></td>
+<td><code>60</code></td>
+<td>Allowed for the clocks</td>
+</tr>
+<tr>
+<td><code>OIDC_JWKS_REFRESH_SECONDS</code></td>
+<td><code>3600</code></td>
+<td>How often the keys are fetched again</td>
+</tr>
+<tr>
+<td><code>OIDC_ADMIN_MAX_AGE_SECONDS</code></td>
+<td><code>0</code> (any)</td>
+<td>The admin endpoints need a login this recent</td>
+</tr>
+<tr>
+<td><code>OIDC_ACCEPT_API_KEYS</code></td>
+<td><code>True</code></td>
+<td>API keys and the admin login still work too</td>
+</tr>
+</tbody>
+</table>
+<p>The settings for a web page's sign-in (<code>OIDC_CONSOLE_*</code>) are in <a href="../sessions/">Browser sessions</a>.</p>
+<h2 id="what-it-doesnt-do">What it doesn't do</h2>
+<ul>
+<li><strong>Take a token back</strong> before it expires: not possible with a JWT. Keep access tokens short.</li>
+<li><strong>Issue tokens.</strong> The server only checks them.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../roles/" class="btn btn-neutral float-left" title="Roles and permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sessions/" class="btn btn-neutral float-right" title="Browser sessions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../roles/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sessions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

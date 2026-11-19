@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/overview/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Overview - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "overview.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/overview/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-it-does">What it does</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-stays-in-each-application">What stays in each application</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-modules">The modules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing">Installing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#versions">Versions</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Overview</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/overview.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="overview">Overview</h1>
+<blockquote>
+<p><strong>For:</strong> whoever runs a sitelabs graph server, and developers of one. <strong>You'll find:</strong> what this
+package does, what stays in each application, and how an application uses it.</p>
+</blockquote>
+<p>sitelabs-graph-security is the security the sitelabs graph servers share:
+<a href="https://github.com/sitelabs-com/sitelabs-graph-database">sitelabs-graph-database</a> and
+<a href="https://github.com/sitelabs-com/sitelabs-partitioned-graph">sitelabs-partitioned-graph</a> both run
+it, with the same settings, the same names and the same behaviour. This site describes how each
+mechanism works. Each application's own documentation says what is particular to it: its
+permissions, its endpoints, its tools and how it is deployed.</p>
+<h2 id="what-it-does">What it does</h2>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>In short</th>
+<th>Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API keys</strong></td>
+<td>Each client has a key with a name, a role and, if you like, a last day. The server holds only the keys' hashes. <code>API_KEYS_FILE</code> changes them without a restart</td>
+<td><a href="../keys/">API keys</a></td>
+</tr>
+<tr>
+<td><strong>Roles and permissions</strong></td>
+<td>Every call needs a permission. <code>read</code>, <code>write</code> and <code>admin</code> are built in; <code>CUSTOM_ROLES</code> makes more</td>
+<td><a href="../roles/">Roles and permissions</a></td>
+</tr>
+<tr>
+<td><strong>An identity provider</strong></td>
+<td>Access tokens from an OpenID Connect provider (Keycloak, Entra ID, Okta, Auth0, Cognito): users and MFA there, roles from a claim</td>
+<td><a href="../oauth-oidc/">OAuth and OIDC</a></td>
+</tr>
+<tr>
+<td><strong>Browser sessions</strong></td>
+<td>A signed cookie for a web page, signed in at the provider or with a key, that may only read</td>
+<td><a href="../sessions/">Browser sessions</a></td>
+</tr>
+<tr>
+<td><strong>The admin login</strong></td>
+<td>A challenge answered with an admin key, which never crosses the network, for a short-lived token</td>
+<td><a href="../admin-login/">Admin login</a></td>
+</tr>
+<tr>
+<td><strong>Rate limits</strong></td>
+<td>Calls a second, and work at once, per caller or role</td>
+<td><a href="../rate-limits/">Rate limits</a></td>
+</tr>
+<tr>
+<td><strong>TLS between the servers</strong></td>
+<td>https on every hop between an application's servers, with a private CA and client certificates</td>
+<td><a href="../internal-tls/">TLS between servers</a></td>
+</tr>
+</tbody>
+</table>
+<p>Every setting, with its default: <a href="../settings/">Settings</a>.</p>
+<h2 id="what-stays-in-each-application">What stays in each application</h2>
+<ul>
+<li><strong>Its permissions</strong> (a <code>Catalogue</code>), and which permission each endpoint needs.</li>
+<li><strong>Its own credentials</strong> between its servers: sitelabs-partitioned-graph's <code>PARTITION_TOKEN</code>,
+  sitelabs-graph-database's <code>REPLICATION_API_KEY</code>.</li>
+<li><strong>Its request state and audit log</strong>, through hooks on <code>Security</code>.</li>
+<li><strong>The names of its cookies and realms</strong>, so two applications on one host don't collide.</li>
+<li><strong>How it is deployed:</strong> its Compose files or Ansible roles, its env files, its tools.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sitelabs-graph-database</th>
+<th>sitelabs-partitioned-graph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Its security pages</td>
+<td><a href="https://sitelabs-com.github.io/sitelabs-graph-database/security/security/">Security</a></td>
+<td><a href="https://sitelabs-com.github.io/sitelabs-partitioned-graph/security/security/">Security</a></td>
+</tr>
+<tr>
+<td>Its permissions</td>
+<td><a href="https://sitelabs-com.github.io/sitelabs-graph-database/security/roles/">Roles and permissions</a></td>
+<td><a href="https://sitelabs-com.github.io/sitelabs-partitioned-graph/security/roles/">Roles and permissions</a></td>
+</tr>
+<tr>
+<td>Cookie, realm</td>
+<td><code>graphdb_session</code>, <code>graphdb</code></td>
+<td><code>pgraph_session</code>, <code>pgraph</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-modules">The modules</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>graph_security.roles</code></td>
+<td>Roles and permissions: an application's <code>Catalogue</code>, the built-in roles, <code>CUSTOM_ROLES</code></td>
+</tr>
+<tr>
+<td><code>graph_security.keys</code></td>
+<td><code>API_KEYS</code> and <code>API_KEYS_FILE</code>; <code>new_key()</code></td>
+</tr>
+<tr>
+<td><code>graph_security.admin_auth</code></td>
+<td>The admin login: challenges, tokens, lockout</td>
+</tr>
+<tr>
+<td><code>graph_security.sessions</code></td>
+<td>Browser sessions: signed cookies</td>
+</tr>
+<tr>
+<td><code>graph_security.oidc</code></td>
+<td>Access tokens from an identity provider</td>
+</tr>
+<tr>
+<td><code>graph_security.limits</code></td>
+<td>Rate limits and work at once</td>
+</tr>
+<tr>
+<td><code>graph_security.internal_tls</code></td>
+<td>TLS between the servers: startup checks, uvicorn's options, clients</td>
+</tr>
+<tr>
+<td><code>graph_security.errors</code></td>
+<td>The refusals, <code>KeyRefused</code> and <code>AdminRefused</code>, with an HTTP status</td>
+</tr>
+<tr>
+<td><code>graph_security.settings</code></td>
+<td><code>SecuritySettings</code>: every setting, the same names and defaults everywhere</td>
+</tr>
+<tr>
+<td><code>graph_security.web</code></td>
+<td>For FastAPI: <code>Security</code>, the checks on each call, and the sign-in endpoints</td>
+</tr>
+</tbody>
+</table>
+<h2 id="installing">Installing</h2>
+<pre><code class="language-bash">pip install &quot;sitelabs-graph-security[fastapi] @ git+https://github.com/sitelabs-com/sitelabs-graph-security.git@v0.2.0&quot;
+pip install --no-deps -e ../sitelabs-graph-security       # while changing it with an application
+</code></pre>
+<p>Python 3.12 or later. It needs PyJWT with <code>cryptography</code>; FastAPI for <code>graph_security.web</code> (the
+<code>fastapi</code> extra); <code>httpx</code> only for <code>internal_tls.httpx_client()</code>. An application pins it to a
+release, and links to that release's site: this one's address names it
+(<code>/sitelabs-graph-security/0.2/</code>). How an application uses it: <a href="../fastapi/">In a FastAPI app</a>.</p>
+<h2 id="versions">Versions</h2>
+<p>Each release is a tag <code>v&lt;version&gt;</code>, with an entry in <a href="https://github.com/sitelabs-com/sitelabs-graph-security/blob/main/CHANGELOG.md">CHANGELOG.md</a>, and a site
+of its own here. Before 1.0, a minor release (0.1 to 0.2) may change the API, said so in the
+changelog with what to do; a patch release doesn't. The applications pin an exact tag.</p>
+<p>The API is what the <a href="#the-modules">modules</a> offer an application, the settings' names and defaults,
+the refusals' statuses and scopes (<a href="../fastapi/#6-the-refusals">In a FastAPI app</a>), and the
+endpoints <code>session_router()</code> adds. The refusals' wording may be improved in any release.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../settings/" class="btn btn-neutral float-right" title="Settings">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="../settings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

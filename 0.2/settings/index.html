@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/settings/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Settings - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Settings";
+        var mkdocs_page_input_path = "settings.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/settings/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Settings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#keys-and-roles">Keys and roles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#admin-logins-and-browser-sessions">Admin logins and browser sessions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rate-limits">Rate limits</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#an-identity-provider">An identity provider</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tls">TLS</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Overview</li>
+      <li class="breadcrumb-item active">Settings</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/settings.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="settings">Settings</h1>
+<blockquote>
+<p><strong>For:</strong> whoever sets a server up. <strong>You'll find:</strong> every security setting, its default, and the
+page that explains it.</p>
+</blockquote>
+<p>The settings have the same names, defaults and meaning in every application that runs this
+package. Each is an environment variable, or a line in the application's <code>.env</code>; the application
+reads them into its own <code>Settings</code>, with these fields (<code>graph_security.settings.SecuritySettings</code>
+lists them).</p>
+<h2 id="keys-and-roles">Keys and roles</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ENVIRONMENT</code></td>
+<td><code>development</code></td>
+<td><code>production</code>: keys (or an identity provider) and internal TLS are required</td>
+</tr>
+<tr>
+<td><code>API_KEYS</code></td>
+<td>none</td>
+<td>The keys' entries, <code>name:role:hash[:YYYY-MM-DD]</code>, comma-separated (<a href="../keys/">API keys</a>)</td>
+</tr>
+<tr>
+<td><code>API_KEYS_FILE</code></td>
+<td>none</td>
+<td>More entries, one a line, read again when the file changes</td>
+</tr>
+<tr>
+<td><code>CUSTOM_ROLES</code></td>
+<td>none</td>
+<td>Roles of your own, <code>name=base(+permission\|-permission)...</code> (<a href="../roles/">Roles and permissions</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="admin-logins-and-browser-sessions">Admin logins and browser sessions</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SESSION_SECRET</code></td>
+<td>made at startup</td>
+<td>Signs admin logins and browser sessions: 32 characters or more, the same on every server</td>
+</tr>
+<tr>
+<td><code>SESSION_SECONDS</code></td>
+<td><code>28800</code></td>
+<td>How long a browser session lasts (<a href="../sessions/">Browser sessions</a>)</td>
+</tr>
+<tr>
+<td><code>ADMIN_TOKEN_SECONDS</code></td>
+<td><code>900</code></td>
+<td>How long an admin login lasts (<a href="../admin-login/">Admin login</a>)</td>
+</tr>
+<tr>
+<td><code>ADMIN_CHALLENGE_SECONDS</code></td>
+<td><code>60</code></td>
+<td>How long a challenge can be answered</td>
+</tr>
+<tr>
+<td><code>ADMIN_MAX_FAILURES</code></td>
+<td><code>5</code></td>
+<td>Wrong answers in a row from one address before it is locked out...</td>
+</tr>
+<tr>
+<td><code>ADMIN_LOCKOUT_SECONDS</code></td>
+<td><code>300</code></td>
+<td>...for this long</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rate-limits">Rate limits</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RATE_LIMIT_PER_SECOND</code></td>
+<td><code>0</code> (none)</td>
+<td>Calls a second each caller may make (<a href="../rate-limits/">Rate limits</a>)</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT_BURST</code></td>
+<td><code>0</code> (twice the rate)</td>
+<td>Calls at once before the rate applies</td>
+</tr>
+<tr>
+<td><code>RATE_LIMITS</code></td>
+<td>none</td>
+<td>Another rate for some callers or roles</td>
+</tr>
+<tr>
+<td><code>MAX_RUNNING_PER_CALLER</code></td>
+<td><code>0</code> (none)</td>
+<td>Heavy calls one caller may have running at once</td>
+</tr>
+</tbody>
+</table>
+<h2 id="an-identity-provider">An identity provider</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OAUTH_OIDC_ACTIVE</code></td>
+<td><code>False</code></td>
+<td>Accept access tokens from an identity provider (<a href="../oauth-oidc/">OAuth and OIDC</a>)</td>
+</tr>
+<tr>
+<td><code>OIDC_ISSUER</code>, <code>OIDC_AUDIENCE</code>, <code>OIDC_ROLE_CLAIM</code>, <code>OIDC_ROLE_MAP</code></td>
+<td>none</td>
+<td>Required with it</td>
+</tr>
+<tr>
+<td><code>OIDC_AUDIENCE_CLAIM</code></td>
+<td><code>aud</code></td>
+<td>Where the audience is</td>
+</tr>
+<tr>
+<td><code>OIDC_NAME_CLAIM</code></td>
+<td><code>preferred_username</code></td>
+<td>The caller's name in the logs</td>
+</tr>
+<tr>
+<td><code>OIDC_JWKS_URL</code></td>
+<td>the discovery document's</td>
+<td>The provider's keys</td>
+</tr>
+<tr>
+<td><code>OIDC_ALGORITHMS</code></td>
+<td><code>RS256,ES256</code></td>
+<td>Signatures accepted</td>
+</tr>
+<tr>
+<td><code>OIDC_LEEWAY_SECONDS</code></td>
+<td><code>60</code></td>
+<td>Allowed for the clocks</td>
+</tr>
+<tr>
+<td><code>OIDC_JWKS_REFRESH_SECONDS</code></td>
+<td><code>3600</code></td>
+<td>How often the keys are fetched again</td>
+</tr>
+<tr>
+<td><code>OIDC_ADMIN_MAX_AGE_SECONDS</code></td>
+<td><code>0</code> (any)</td>
+<td>The admin endpoints need a login this recent</td>
+</tr>
+<tr>
+<td><code>OIDC_ACCEPT_API_KEYS</code></td>
+<td><code>True</code></td>
+<td>API keys and the admin login still work too</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_CLIENT_ID</code></td>
+<td>none</td>
+<td>A web page's client, for signing in there (<a href="../sessions/">Browser sessions</a>)</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_SCOPES</code></td>
+<td><code>openid profile</code></td>
+<td>The scopes it asks for</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_AUTH_PARAMS</code></td>
+<td>none</td>
+<td>More parameters for the provider's sign-in page</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_REDIRECT_URI</code></td>
+<td><code>&lt;this server&gt;/console/sso/callback</code></td>
+<td>Where the provider sends the browser back</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metrics">Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>METRICS_BEARER_TOKEN</code></td>
+<td>none</td>
+<td>Set: <code>GET /metrics</code> needs <code>Authorization: Bearer &lt;token&gt;</code> (401 without). A production server warns when it isn't set</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tls">TLS</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UVICORN_SSL_CERTFILE</code>, <code>UVICORN_SSL_KEYFILE</code></td>
+<td>none</td>
+<td>This server's certificate and key (<a href="../internal-tls/">TLS between servers</a>)</td>
+</tr>
+<tr>
+<td><code>UVICORN_SSL_CA_CERTS</code></td>
+<td>none</td>
+<td>The CA callers' client certificates must come from</td>
+</tr>
+<tr>
+<td><code>UVICORN_SSL_CERT_REQS</code></td>
+<td><code>none</code></td>
+<td><code>none</code>, <code>optional</code> or <code>required</code></td>
+</tr>
+<tr>
+<td><code>INTERNAL_TLS_CA_FILE</code></td>
+<td>none</td>
+<td>The CA the other servers' certificates must come from</td>
+</tr>
+<tr>
+<td><code>INTERNAL_TLS_CERTFILE</code>, <code>INTERNAL_TLS_KEYFILE</code></td>
+<td>none</td>
+<td>This server's client certificate</td>
+</tr>
+<tr>
+<td><code>INTERNAL_TLS_SERVER_NAME</code></td>
+<td>none</td>
+<td>The name to check the servers' certificates against</td>
+</tr>
+<tr>
+<td><code>INTERNAL_TLS_REQUIRED</code></td>
+<td><code>True</code> in production</td>
+<td>Internal URLs must be https, and this server too</td>
+</tr>
+<tr>
+<td><code>UVICORN_FORWARDED_ALLOW_IPS</code></td>
+<td><code>127.0.0.1,::1</code></td>
+<td>The reverse proxies whose <code>X-Forwarded-For</code> is believed: the lockout, the rate limits and the audit log see each client's own address. <code>*</code>: anyone, which a production server warns about. Not one of this package's settings: each application has it, under this name</td>
+</tr>
+</tbody>
+</table>
+<p>Each application has settings of its own beside these: its credentials between servers, its limits
+and its deployment. Its configuration reference lists them all.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../overview/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../keys/" class="btn btn-neutral float-right" title="API keys">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../keys/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/roles/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Roles and permissions - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Roles and permissions";
+        var mkdocs_page_input_path = "roles.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/roles/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Roles and permissions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#permissions-are-the-applications">Permissions are the application's</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-built-in-roles">The built-in roles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#roles-of-your-own">Roles of your own</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-a-caller-gets-a-role">How a caller gets a role</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#refusals">Refusals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-roles-dont-do">What roles don't do</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Callers</li>
+      <li class="breadcrumb-item active">Roles and permissions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/roles.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="roles-and-permissions">Roles and permissions</h1>
+<blockquote>
+<p><strong>For:</strong> whoever gives clients their keys or their roles at the identity provider, and developers
+of an application. <strong>You'll find:</strong> how permissions and roles work, the built-in roles, making
+roles of your own, how keys, tokens and sessions get a role, and what a refusal says.</p>
+</blockquote>
+<p>Every call needs a <strong>permission</strong>. A caller has a <strong>role</strong>, and a role is a set of permissions.</p>
+<h2 id="permissions-are-the-applications">Permissions are the application's</h2>
+<p>Each application names its permissions in a <strong>catalogue</strong>, and says which each endpoint needs. Some
+are <strong>admin permissions</strong>: they need an <a href="../admin-login/">admin login</a>, or a token from the identity
+provider, as well as the role.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Its permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sitelabs-graph-database</td>
+<td><code>query</code>, <code>write</code>, <code>load</code>; admin: <code>manage</code>, <code>backup</code>, <code>repair</code>, <code>leadership</code>, <code>diagnostics</code>, <code>procedures</code> (<a href="https://sitelabs-com.github.io/sitelabs-graph-database/security/roles/">its page</a>)</td>
+</tr>
+<tr>
+<td>sitelabs-partitioned-graph</td>
+<td><code>query</code>, <code>export</code>, <code>algorithms</code>, <code>write</code>, <code>delete</code>, <code>load</code>; admin: <code>standbys</code>, <code>resize</code>, <code>rollback</code>, <code>suspend</code>, <code>raise_deletes</code> (<a href="https://sitelabs-com.github.io/sitelabs-partitioned-graph/security/roles/">its page</a>)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">from graph_security.roles import Catalogue, use
+
+CATALOGUE = use(Catalogue(
+    {&quot;query&quot;: &quot;read queries&quot;, &quot;write&quot;: &quot;write queries&quot;, &quot;load&quot;: &quot;bulk loads&quot;, &quot;manage&quot;: &quot;the platform&quot;},
+    read={&quot;query&quot;}, write={&quot;write&quot;, &quot;load&quot;}, admin_only={&quot;manage&quot;}))
+</code></pre>
+<h2 id="the-built-in-roles">The built-in roles</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>read</strong></td>
+<td>The catalogue's <code>read</code> set</td>
+</tr>
+<tr>
+<td><strong>write</strong></td>
+<td>read's, and the <code>write</code> set</td>
+</tr>
+<tr>
+<td><strong>admin</strong></td>
+<td>Every permission: write's with its key, and the admin permissions after logging in</td>
+</tr>
+</tbody>
+</table>
+<h2 id="roles-of-your-own">Roles of your own</h2>
+<p><code>CUSTOM_ROLES</code> holds them, comma-separated, each <code>name=base</code>, then <code>-permission</code> to take one away or
+<code>+permission</code> to add one:</p>
+<pre><code class="language-bash">CUSTOM_ROLES=feeder=read+load,writer=write-load,operator=admin-manage
+</code></pre>
+<ul>
+<li><strong>A name</strong> is lower case: letters, digits, <code>_</code> and <code>-</code>, starting with a letter, up to 32
+  characters, and not <code>read</code>, <code>write</code> or <code>admin</code>.</li>
+<li><strong>Only a role built on admin may log in as an admin,</strong> and admin permissions can be added to no
+  other role: <code>x=write+manage</code> is refused.</li>
+<li><strong>A role with nothing left,</strong> or an unknown permission, is refused. The server names the entry and
+  refuses to start.</li>
+<li><strong>Roles are read at startup.</strong> Changing <code>CUSTOM_ROLES</code> takes a restart; keys can change without one
+  (<a href="../keys/#changing-keys-without-a-restart">API keys</a>).</li>
+</ul>
+<h2 id="how-a-caller-gets-a-role">How a caller gets a role</h2>
+<ul>
+<li><strong>An API key</strong> names its role in its entry, <code>name:role:hash</code>, which may be a role of your own
+  (<a href="../keys/">API keys</a>).</li>
+<li><strong>A token from the identity provider</strong> gets its roles from <code>OIDC_ROLE_MAP</code>, which may map a group
+  to a role of your own: <code>OIDC_ROLE_MAP=feeder=graph-feeders</code>. A token with several roles has the
+  permissions of all of them (<a href="../oauth-oidc/">OAuth and OIDC</a>).</li>
+<li><strong>A browser session</strong> keeps only <code>query</code>, whatever its role (<a href="../sessions/">Browser sessions</a>).
+  So an application whose read permission isn't called <code>query</code> gets sessions that do nothing.</li>
+<li><strong>With no keys and no identity provider</strong> (development), every caller has every permission.</li>
+</ul>
+<h2 id="refusals">Refusals</h2>
+<p>A call without the permission answers <strong>403</strong>, naming the permission, what it covers, the caller and
+their role:</p>
+<pre><code class="language-json">{&quot;error&quot;: &quot;this needs the load permission (bulk loads); 'ann' has the role feeder, which hasn't it&quot;}
+</code></pre>
+<p>The application decides what else a refusal does: both audit every refusal.</p>
+<h2 id="what-roles-dont-do">What roles don't do</h2>
+<ul>
+<li><strong>No rules per label or property.</strong> A role that may query reads the whole graph. Put finer rules
+  in the application in front of the server.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../keys/" class="btn btn-neutral float-left" title="API keys"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../oauth-oidc/" class="btn btn-neutral float-right" title="OAuth and OIDC">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../keys/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../oauth-oidc/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

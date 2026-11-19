@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/fastapi/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>In a FastAPI app - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "In a FastAPI app";
+        var mkdocs_page_input_path = "fastapi.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/fastapi/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">In a FastAPI app</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-the-permissions">1. The permissions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-the-parts">2. The parts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-the-checks-on-each-call">3. The checks on each call</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-the-sign-in-endpoints">4. The sign-in endpoints</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-the-hooks">5. The hooks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-the-refusals">6. The refusals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Using it</li>
+      <li class="breadcrumb-item active">In a FastAPI app</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/fastapi.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="in-a-fastapi-app">In a FastAPI app</h1>
+<blockquote>
+<p><strong>For:</strong> developers of an application that runs this package. <strong>You'll find:</strong> registering the
+permissions, the parts the checks need, the checks on each call, the sign-in endpoints, the hooks,
+and the refusals.</p>
+</blockquote>
+<h2 id="1-the-permissions">1. The permissions</h2>
+<p>Register the application's catalogue once, when its roles module is imported. Functions called
+without <code>roles</code> use it, and say so if there is none.</p>
+<pre><code class="language-python">from graph_security.roles import Catalogue, use
+
+CATALOGUE = use(Catalogue(
+    {&quot;query&quot;: &quot;read queries&quot;, &quot;write&quot;: &quot;write queries&quot;, &quot;load&quot;: &quot;bulk loads&quot;, &quot;manage&quot;: &quot;the platform&quot;},
+    read={&quot;query&quot;}, write={&quot;write&quot;, &quot;load&quot;}, admin_only={&quot;manage&quot;}))
+BUILT_IN, parse_roles = CATALOGUE.built_in, CATALOGUE.parse_roles
+</code></pre>
+<p><code>query</code> is the permission a browser session keeps (<a href="../sessions/">Browser sessions</a>): name the read
+permission so, or sessions do nothing.</p>
+<h2 id="2-the-parts">2. The parts</h2>
+<p><code>Security</code> reads the application's security parts from each request, through <code>parts(request)</code>: an
+object with <code>keys</code> (<code>graph_security.keys.ApiKeys</code>), <code>admin</code> (<code>admin_auth.AdminAuth</code>), <code>sessions</code>
+(<code>sessions.Sessions</code>), <code>limits</code> (<code>limits.Limits</code>, or <code>None</code>) and <code>oidc</code> (<code>oidc.Oidc</code>, or <code>None</code>).
+The application makes them at startup from its settings, usually on <code>app.state</code>.</p>
+<h2 id="3-the-checks-on-each-call">3. The checks on each call</h2>
+<pre><code class="language-python">from fastapi import Depends, Request
+from graph_security.web import Security
+
+SECURITY = Security(parts=lambda request: request.app.state,
+                    settings=lambda request: get_settings(),
+                    cookie=&quot;app_session&quot;, sso_cookie=&quot;app_sso&quot;,
+                    on_caller=lambda request, p: ..., audit=...)
+
+@app.post(&quot;/query&quot;, dependencies=[Depends(SECURITY.permission(&quot;query&quot;)), Depends(SECURITY.running)])
+def query(request: Request, ...):
+    SECURITY.demand(request, &quot;write&quot;)              # once it knows the query writes
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SECURITY.permission(name)</code></td>
+<td>A dependency: the caller (a key, a token, a session, or anyone when open), whose role has the permission. An admin permission needs an admin login or token too. Counts the call against the caller's rate</td>
+</tr>
+<tr>
+<td><code>SECURITY.demand(request, name)</code></td>
+<td>The same check, in the middle of a call: for a permission only the request's content shows</td>
+</tr>
+<tr>
+<td><code>SECURITY.running</code></td>
+<td>A dependency: one of the caller's <code>MAX_RUNNING_PER_CALLER</code> places, while the call runs</td>
+</tr>
+<tr>
+<td><code>SECURITY.caller(request)</code></td>
+<td>The caller already identified, or <code>None</code></td>
+</tr>
+<tr>
+<td><code>SECURITY.is_open(request)</code></td>
+<td>No keys and no identity provider: every endpoint open</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-the-sign-in-endpoints">4. The sign-in endpoints</h2>
+<pre><code class="language-python">app.include_router(SECURITY.session_router())
+</code></pre>
+<p><code>GET</code>, <code>POST</code> and <code>DELETE /session</code>, and <code>/console/sso/start</code> and <code>/console/sso/callback</code> for signing
+in at the identity provider (<a href="../sessions/">Browser sessions</a>). The admin login's endpoints
+(<code>/admin/challenge</code>, <code>/admin/login</code>, <code>/admin/logout</code>) stay in the application, calling <code>AdminAuth</code>
+(<a href="../admin-login/">Admin login</a>).</p>
+<h2 id="5-the-hooks">5. The hooks</h2>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>Called</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on_caller(request, principal)</code></td>
+<td>As soon as the caller is known: for the logs and the application's request state</td>
+</tr>
+<tr>
+<td><code>on_admin(request)</code></td>
+<td>When a call needs an admin permission: for the audit log</td>
+</tr>
+<tr>
+<td><code>audit(action, message, level, **fields)</code></td>
+<td>For the sign-in lines (<code>session.start</code>, <code>session.end</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><code>cookie</code> and <code>sso_cookie</code> name the session cookie and the sign-in's: cookies are per host, not per
+port, so applications on one host name theirs apart.</p>
+<h2 id="6-the-refusals">6. The refusals</h2>
+<p>The checks raise <code>KeyRefused</code> (callers) and <code>AdminRefused</code> (the admin login), from
+<code>graph_security.errors</code>, each with an HTTP <code>status</code>, a message, and for 429 a <code>retry_after</code>. Answer
+them with their status, and on a 401 with a <code>WWW-Authenticate</code> naming the realm for their <code>scope</code>
+(<code>Bearer realm="app"</code>, <code>"app-admin"</code>). Both applications log every refusal in their audit log.</p>
+<h2 id="settings">Settings</h2>
+<p>The modules read the settings by name (<code>settings.api_keys</code>, <code>settings.oidc_issuer</code>, ...), from the
+application's own <code>Settings</code> or a <code>SecuritySettings</code>: give the application's the same fields
+(<a href="../settings/">Settings</a>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../internal-tls/" class="btn btn-neutral float-left" title="TLS between servers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../development/" class="btn btn-neutral float-right" title="Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../internal-tls/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../development/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

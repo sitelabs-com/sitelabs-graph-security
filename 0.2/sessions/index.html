@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/sessions/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Browser sessions - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Browser sessions";
+        var mkdocs_page_input_path = "sessions.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/sessions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Browser sessions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#signing-in">Signing in</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-a-session-may-do">What a session may do</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-cookie">The cookie</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#at-the-identity-provider">At the identity provider</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rate-limits/">Rate limits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Callers</li>
+      <li class="breadcrumb-item active">Browser sessions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/sessions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="browser-sessions">Browser sessions</h1>
+<blockquote>
+<p><strong>For:</strong> whoever sets up a web page (a query console, dashboards) for people, not programs.
+<strong>You'll find:</strong> signing in at the identity provider or with a key, what a session may do, the
+cookie, the endpoints, and the settings.</p>
+</blockquote>
+<p>A browser can stay signed in to a server, so a page needs no key typed each time. The session is a
+cookie the server sets; the browser never holds a key or a token.</p>
+<h2 id="signing-in">Signing in</h2>
+<ul>
+<li><strong>At the identity provider</strong> (with <code>OIDC_CONSOLE_CLIENT_ID</code>): the page sends the browser to
+  <code>/console/sso/start</code>, which sends it on to the provider's sign-in page. It comes back to
+  <code>/console/sso/callback</code> with a code, which the server exchanges for an access token itself (the
+  authorization code flow, with PKCE). It checks the token as it checks every token
+  (<a href="../oauth-oidc/#how-a-token-is-checked">OAuth and OIDC</a>), then sets the cookie. The token never
+  reaches the browser.</li>
+<li><strong>With a key:</strong> the page sends it once, <code>POST /session</code> with <code>X-API-Key</code>, and forgets it.</li>
+<li><strong>From a script:</strong> <code>POST /session</code> with <code>X-API-Key</code> or <code>Authorization: Bearer</code> sets the same cookie.</li>
+</ul>
+<p><strong>Signing out</strong> (<code>DELETE /session</code>) drops the cookie, and the server remembers that session ended.
+<code>GET /session</code> says who is signed in, and until when.</p>
+<h2 id="what-a-session-may-do">What a session may do</h2>
+<p><strong>Only read.</strong> Of its role's permissions a session keeps <code>query</code> alone: it can't write, load or log
+in as an admin, whatever its role. A leaked cookie can't change the graph.</p>
+<ul>
+<li><strong>A session made with a key ends with the key:</strong> removed from <code>API_KEYS_FILE</code>, replaced or expired,
+  it stops working at the next call.</li>
+<li><strong>A session from the identity provider keeps the role it signed in with</strong> until it ends, after
+  <code>SESSION_SECONDS</code> (8 hours). Taking someone's role away at the provider counts from their next
+  sign-in.</li>
+<li><strong>A role without <code>query</code></strong> can't make a session (403): it would do nothing.</li>
+</ul>
+<h2 id="the-cookie">The cookie</h2>
+<ul>
+<li><code>HttpOnly</code> (no script can read it), <code>SameSite=Strict</code> (no other site's page can send it) and, over
+  https, <code>Secure</code>.</li>
+<li><strong>Signed with <code>SESSION_SECRET</code></strong> (HMAC-SHA256). Give every server of an application the same one,
+  and a session works at all of them, and across a restart. Without it, a secret is made at startup,
+  and a restart signs everyone out.</li>
+<li><strong>Named by the application:</strong> cookies are per host, not per port, so two applications on one host
+  name theirs apart (sitelabs-graph-database: <code>graphdb_session</code>; sitelabs-partitioned-graph:
+  <code>pgraph_session</code>).</li>
+</ul>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SESSION_SECRET</code></td>
+<td>made at startup</td>
+<td>Signs the sessions and the admin logins: 32 characters or more, the same on every server</td>
+</tr>
+<tr>
+<td><code>SESSION_SECONDS</code></td>
+<td><code>28800</code></td>
+<td>How long a session lasts after signing in</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_CLIENT_ID</code></td>
+<td>none</td>
+<td>The page's client at the identity provider: signing in there needs it</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_SCOPES</code></td>
+<td><code>openid profile</code></td>
+<td>The scopes it asks for. Add the API's own when the provider needs one for the token's audience (Entra ID: <code>api://&lt;id&gt;/.default</code>; Cognito: its resource server's scope)</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_AUTH_PARAMS</code></td>
+<td>none</td>
+<td>More parameters for the provider's sign-in page: <code>audience=graph-api</code> for Auth0</td>
+</tr>
+<tr>
+<td><code>OIDC_CONSOLE_REDIRECT_URI</code></td>
+<td><code>&lt;this server&gt;/console/sso/callback</code></td>
+<td>Where the provider sends the browser back, when the address the server sees isn't the one the browser uses</td>
+</tr>
+</tbody>
+</table>
+<h2 id="at-the-identity-provider">At the identity provider</h2>
+<ol>
+<li><strong>A public client</strong> (no secret) using the <strong>authorization code</strong> flow with <strong>PKCE</strong>. Its id is
+   <code>OIDC_CONSOLE_CLIENT_ID</code>.</li>
+<li><strong>Its redirect URI</strong> is <code>https://&lt;the server's public name&gt;/console/sso/callback</code>, exactly.</li>
+<li><strong>Its access tokens</strong> must be the API's like any client's: the audience <code>OIDC_AUDIENCE</code>, and the
+   roles in <code>OIDC_ROLE_CLAIM</code>.</li>
+</ol>
+<p>The server calls the provider's token endpoint itself, so it must reach it. Behind a reverse proxy,
+the callback address comes from the request: the proxy must pass the <code>Host</code> header, and the server
+must believe its <code>X-Forwarded-Proto</code> (<code>UVICORN_FORWARDED_ALLOW_IPS</code>). Else set
+<code>OIDC_CONSOLE_REDIRECT_URI</code>. Behind a load balancer with several servers, set it to the public
+address, so the callback names it whichever server answers.</p>
+<p>Every sign-in, refused or not, and every sign-out goes to the application's audit hook
+(<code>session.start</code>, <code>session.end</code>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../oauth-oidc/" class="btn btn-neutral float-left" title="OAuth and OIDC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../admin-login/" class="btn btn-neutral float-right" title="Admin login">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../oauth-oidc/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../admin-login/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

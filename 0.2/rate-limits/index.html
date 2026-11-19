@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitelabs-com.github.io/sitelabs-graph-security/latest/rate-limits/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Rate limits - sitelabs-graph-security</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Rate limits";
+        var mkdocs_page_input_path = "rate-limits.md";
+        var mkdocs_page_url = "/sitelabs-graph-security/latest/rate-limits/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> sitelabs-graph-security
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Callers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../keys/">API keys</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles and permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oauth-oidc/">OAuth and OIDC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sessions/">Browser sessions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Protections</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-login/">Admin login</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Rate limits</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#past-a-limit">Past a limit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-isnt-limited">What isn't limited</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limits">Limits</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../internal-tls/">TLS between servers</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using it</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastapi/">In a FastAPI app</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">All documents</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">sitelabs-graph-security</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Protections</li>
+      <li class="breadcrumb-item active">Rate limits</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security/edit/master/docs/rate-limits.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="rate-limits">Rate limits</h1>
+<blockquote>
+<p><strong>For:</strong> whoever runs a server that several clients share. <strong>You'll find:</strong> the limit on calls a
+second and the limit on work at once, per caller and per role, and what a client sees past them.</p>
+</blockquote>
+<p>So one client can't take a server for itself, it can limit each caller in two ways. Both are off by
+default.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>What it limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RATE_LIMIT_PER_SECOND</code></td>
+<td><code>0</code> (no limit)</td>
+<td>Calls a second each caller may make</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT_BURST</code></td>
+<td><code>0</code> (twice the rate, at least 1)</td>
+<td>How many calls may come at once before the rate applies</td>
+</tr>
+<tr>
+<td><code>RATE_LIMITS</code></td>
+<td>none</td>
+<td>Another rate for some callers or roles: <code>name=rate[/burst]</code>, <code>role:name=rate[/burst]</code>; <code>0</code> for no limit</td>
+</tr>
+<tr>
+<td><code>MAX_RUNNING_PER_CALLER</code></td>
+<td><code>0</code> (no limit)</td>
+<td>The heavy calls one caller may have running at the same time: the application says which (queries, loads, ...)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">RATE_LIMIT_PER_SECOND=20                       # every caller: 20 calls a second, in bursts of 40
+RATE_LIMITS=ingest=0,role:analyst=5/10         # the ingest key: no limit; analysts: 5 a second, bursts of 10
+MAX_RUNNING_PER_CALLER=4                       # and no more than 4 heavy calls at once
+</code></pre>
+<ul>
+<li><strong>The rate</strong> is a token bucket per caller: it fills at the rate, up to the burst, and each call takes
+  one.</li>
+<li><strong>Who a caller is:</strong> a key's or a token's name (the one in the logs), or a browser session's. With
+  no keys, the caller's address: behind a reverse proxy, the address it passes on
+  (<code>UVICORN_FORWARDED_ALLOW_IPS</code>).</li>
+<li><strong>Which rate applies:</strong> a caller's own in <code>RATE_LIMITS</code> wins over its role's, which wins over
+  <code>RATE_LIMIT_PER_SECOND</code>.</li>
+<li><strong>A malformed <code>RATE_LIMITS</code> entry</strong> stops the server at startup, naming it.</li>
+</ul>
+<h2 id="past-a-limit">Past a limit</h2>
+<p>The call answers <strong>429</strong>, with a <code>Retry-After</code> in seconds and the limit it hit, and does nothing:</p>
+<pre><code class="language-json">{&quot;error&quot;: &quot;too many calls from 'ann': 5 a second at most (RATE_LIMIT_PER_SECOND, RATE_LIMITS)&quot;}
+{&quot;error&quot;: &quot;'ann' already has 4 queries running (MAX_RUNNING_PER_CALLER=4): wait for one to finish&quot;}
+</code></pre>
+<h2 id="what-isnt-limited">What isn't limited</h2>
+<p>The application decides: both leave health checks and metrics out, since load balancers, container
+health checks and Prometheus call them often. The admin login has a limit of its own
+(<a href="../admin-login/#the-lockout">Admin login</a>).</p>
+<h2 id="limits">Limits</h2>
+<ul>
+<li><strong>Each server counts on its own.</strong> A caller sent to several servers gets the rate at each, and a
+  server that takes over from another starts afresh.</li>
+<li><strong>No quotas over time,</strong> such as rows a day: a reverse proxy, or the application in front, can add
+  them.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../admin-login/" class="btn btn-neutral float-left" title="Admin login"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../internal-tls/" class="btn btn-neutral float-right" title="TLS between servers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/sitelabs-com/sitelabs-graph-security" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../admin-login/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../internal-tls/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
